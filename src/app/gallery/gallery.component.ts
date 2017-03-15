@@ -3,11 +3,11 @@ import { Component, Input } from '@angular/core';
 import { User } from '../user'
 
 @Component({
-  selector: 'dashboard',
-  templateUrl: './dashboard.component.html',
+  selector: 'gallery',
+  templateUrl: './gallery.component.html',
 //   styleUrls: ['./app.component.css'],
 })
-export class DashboardComponent {
+export class GalleryComponent {
   @Input()
   user: User;
 }

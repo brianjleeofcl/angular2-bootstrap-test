@@ -8,7 +8,10 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
-import { DashboardComponent } from './dashboard/dashboard.component'
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { GalleryComponent } from './gallery/gallery.component';
+import { DevicesComponent } from './devices/devices.component';
+import { DeviceDetailComponent } from './devices/device-detail.component';
 
 import { UserService } from './user.service';
 
@@ -16,7 +19,10 @@ import { UserService } from './user.service';
   declarations: [
     AppComponent,
     NavbarComponent,
-    DashboardComponent
+    DashboardComponent,
+    GalleryComponent,
+    DevicesComponent,
+    DeviceDetailComponent
   ],
   imports: [
     BrowserModule,
@@ -24,8 +30,20 @@ import { UserService } from './user.service';
     HttpModule,
     RouterModule.forRoot([
       {
-        path: '/',
+        path: '',
+        component: GalleryComponent
+      },
+      {
+        path: 'dashboard',
         component: DashboardComponent
+      },
+      {
+        path: 'devices',
+        component: DevicesComponent
+      },
+      {
+        path: 'device/:uuid',
+        component: DeviceDetailComponent
       }
     ]),
     NgbModule.forRoot()
