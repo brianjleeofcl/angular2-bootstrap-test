@@ -88,3 +88,23 @@ function onListening() {
     : 'port ' + addr.port;
   console.log('Listening on ' + bind);
 }
+
+/*
+  Socket.io stuff
+*/
+
+const io = require('socket.io')(server)
+
+io.on('connection', client => {
+  console.log(`connected: ${client.id}`)
+
+  client.on('join', data => {
+    console.log(data)
+    client.send('Welcome new client!')
+  })
+
+  client.on('instruction', instruction => {
+    console.log(instruction)
+    client.send('Got it!')
+  })
+})

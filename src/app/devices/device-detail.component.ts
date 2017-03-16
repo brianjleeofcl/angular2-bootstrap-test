@@ -5,6 +5,7 @@ import { Location } from '@angular/common';
 import { Device } from '../device'
 
 import 'rxjs/add/operator/switchMap'
+import * as io from 'socket.io-client'
 
 @Component({
   selector: 'device-detail',
@@ -15,6 +16,7 @@ export class DeviceDetailComponent {
   @Input()
   device: Device;
   uuid: string;
+  socket: any;
 
   constructor(
     private route: ActivatedRoute,
@@ -23,6 +25,10 @@ export class DeviceDetailComponent {
 
   ngOnInit() {
     this.route.params.subscribe((params: Params) => this.uuid = params['uuid'])
+    this.socket = io.connect('/')
+  }
 
+  sendInstructions() {
+    this.socket.emit('instruction', 'Do something specified here')
   }
 }
